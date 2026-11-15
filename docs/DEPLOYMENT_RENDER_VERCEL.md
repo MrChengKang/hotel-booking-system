@@ -35,12 +35,12 @@ Blueprint 會產生穩定的 remember-me key。Admin bootstrap 預設關閉；�
 
 ## 啟用 Sandbox 付款
 
-初次部署將 `STAY_PAYMENTS_ENABLED=false`，先驗證服務與公開網址，再設定付款：
+目前 Blueprint 已啟用 Sandbox 付款，需要兩個 Stripe secrets。若第一次部署尚未設定公開 webhook，先把 `render.yaml` 的 `STAY_PAYMENTS_ENABLED` 改成 `false`，驗證服務與公開網址後，再設定付款：
 
 1. 在 Stripe Sandbox 建立公開 webhook，URL 為 `https://實際Render網址/api/payments/webhook`。
 2. 選擇 `checkout.session.completed`、`checkout.session.expired`、`checkout.session.async_payment_succeeded`、`checkout.session.async_payment_failed`、`refund.created`、`refund.updated`、`refund.failed`。
 3. 在 Render 填入 `STRIPE_SECRET_KEY` 和該公開 endpoint 的 `STRIPE_WEBHOOK_SECRET`。本機 `stripe listen` 的 signing secret 不適用。
-4. 將後端 repository 的 `render.yaml` 中 `STAY_PAYMENTS_ENABLED` 改成 `true`，推送並同步 Blueprint。這個設定由 Blueprint 管理，不能只改 Dashboard 而保留 YAML 的 `false`。
+4. 確認後端 repository 的 `render.yaml` 中 `STAY_PAYMENTS_ENABLED` 為 `true`，推送並同步 Blueprint。這個設定由 Blueprint 管理，不能只改 Dashboard 而保留 YAML 的 `false`。
 5. 用測試卡完成一筆預訂，確認 webhook、訂單狀態與符合期限的退款流程。只使用測試金鑰。
 
 ## 上線驗證
