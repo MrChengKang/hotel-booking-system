@@ -8,7 +8,7 @@ The [Admin Dashboard](docs/ADMIN.md) provides platform counts, hotel approval, a
 
 ## Deployment
 
-Dockerfiles, a same-origin Nginx `/api` proxy, persistent-media Compose configuration, production environment templates and CI checks are ready. See [the deployment guide](docs/DEPLOYMENT.md). No cloud resources or public deployment are created automatically.
+For Vercel Hobby + Render Free, see [the hosting guide](docs/DEPLOYMENT_RENDER_VERCEL.md). It includes the same-origin API proxy, SPA routes, backend Blueprint and Sandbox webhook setup. Docker/Compose hosting remains available in [the deployment guide](docs/DEPLOYMENT.md). CI runs tests and builds; it does not provision cloud resources.
 
 ## Start
 

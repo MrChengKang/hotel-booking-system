@@ -1,5 +1,7 @@
 # STAY 部署準備與上線流程
 
+若使用 Vercel + Render Free，請依 [Render／Vercel 部署流程](DEPLOYMENT_RENDER_VERCEL.md) 設定。以下保留 Docker／自有主機的操作方式。
+
 這份設定適用於公開展示版，付款保持 **Stripe Sandbox**。程式已準備成可建置的 Docker 映像；目前沒有建立付費主機、設定網域或發布到外網。
 
 ## 建議架構

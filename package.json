@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "check:deployment": "node scripts/smoke-deployment.mjs"
+    "check:deployment": "node scripts/smoke-deployment.mjs",
+    "check:hosting": "node --test scripts/hosting-config.test.cjs"
   },
   "eslintConfig": {
     "extends": [

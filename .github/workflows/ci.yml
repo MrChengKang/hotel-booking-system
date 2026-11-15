@@ -16,6 +16,7 @@ jobs:
           node-version: '24'
           cache: npm
       - run: npm ci --no-audit --no-fund
+      - run: npm run check:hosting
       - run: npm test -- --watch=false --runInBand
         env:
           CI: 'true'
