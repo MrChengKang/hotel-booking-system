@@ -11,26 +11,32 @@ test("requires an explicit public HTTPS backend origin", () => {
 
 test("preserves the Spring API prefix through the same-origin proxy", () => {
   const config = createVercelConfig("https://stay-api.onrender.com");
-  assert.deepEqual(config.rewrites[0], { source: "/api/:path*", destination: "https://stay-api.onrender.com/api/:path*" });
+  const rule = config.routes.find(rule => rule.dest?.startsWith("https://"));
+  assert.equal("/api/hotels/123".replace(new RegExp(rule.src), rule.dest), "https://stay-api.onrender.com/api/hotels/123");
+  assert.equal("/api/auth/csrf".replace(new RegExp(rule.src), rule.dest), "https://stay-api.onrender.com/api/auth/csrf");
   assert.equal(config.buildCommand, "npm run build");
   assert.equal(config.outputDirectory, "build");
 });
 
 test("deep links include authentication, private workspaces and hotel search", () => {
-  const sources = createVercelConfig("https://stay-api.onrender.com").rewrites.map(rule => rule.source);
-  for (const path of ["/login", "/register", "/forgot-password", "/reset-password", "/account", "/wishlist", "/notifications", "/bookings", "/hotels/:path*", "/hotel/:path*", "/host/:path*", "/admin/:path*"]) {
-    assert.ok(sources.includes(path), path);
+  const routes = createVercelConfig("https://stay-api.onrender.com").routes;
+  for (const path of ["/", "/login", "/register", "/forgot-password", "/reset-password", "/account", "/wishlist", "/notifications", "/bookings", "/hotels", "/hotel/123", "/host", "/host/rooms", "/admin", "/admin/refunds"]) {
+    const match = routes.find(rule => rule.src && !rule.continue && new RegExp(rule.src).test(path));
+    assert.equal(match?.dest, "/index.html", path);
   }
 });
 
-test("missing static resources and dotfiles cannot fall through to SPA HTML", () => {
-  const config = createVercelConfig("https://stay-api.onrender.com");
-  assert.ok(config.rewrites.every(rule => rule.source !== "/(.*)" && rule.source !== "/:path*"));
-  assert.ok(config.rewrites.every(rule => !rule.source.startsWith("/static") && !rule.source.startsWith("/.")));
+test("filesystem misses including dotfiles resolve to a real 404", () => {
+  const routes = createVercelConfig("https://stay-api.onrender.com").routes;
+  assert.ok(routes.findIndex(rule => rule.handle === "filesystem") < routes.findIndex(rule => rule.dest === "/index.html"));
+  for (const path of ["/.env.local", "/.git/config", "/static/missing.js", "/missing.png", "/unknown"]) {
+    const match = routes.find(rule => rule.src && !rule.continue && new RegExp(rule.src).test(path));
+    assert.equal(match?.status, 404, path);
+  }
 });
 
 test("session and CSRF responses cannot be cached at the proxy", () => {
   const config = createVercelConfig("https://stay-api.onrender.com");
-  const headers = Object.fromEntries(config.headers.find(rule => rule.source === "/api/:path*").headers.map(header => [header.key, header.value]));
+  const headers = config.routes.find(rule => rule.dest?.startsWith("https://")).headers;
   for (const name of ["Cache-Control", "CDN-Cache-Control", "Vercel-CDN-Cache-Control"]) assert.equal(headers[name], "no-store");
 });

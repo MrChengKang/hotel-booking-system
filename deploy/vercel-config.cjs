@@ -19,21 +19,23 @@ function createVercelConfig(value) {
     installCommand: "npm ci --no-audit --no-fund",
     buildCommand: "npm run build",
     outputDirectory: "build",
-    rewrites: [
-      { source: "/api/:path*", destination: `${origin}/api/:path*` },
-      ...singlePages.map(page => ({ source: `/${page}`, destination: "/index.html" })),
-      ...nestedPages.map(page => ({ source: `/${page}/:path*`, destination: "/index.html" })),
-    ],
-    headers: [
-      { source: "/(.*)", headers: [
-        { key: "X-Content-Type-Options", value: "nosniff" },
-        { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-      ] },
-      { source: "/api/:path*", headers: [
-        { key: "Cache-Control", value: "no-store" },
-        { key: "CDN-Cache-Control", value: "no-store" },
-        { key: "Vercel-CDN-Cache-Control", value: "no-store" },
-      ] },
+    // Explicit ordering also overrides CRA's platform-wide SPA fallback, which
+    // otherwise returns index.html for nonexistent dotfiles such as /.env.local.
+    routes: [
+      { src: "^/.*$", headers: {
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+      }, continue: true },
+      { src: "^/api(?:/(.*))?$", dest: `${origin}/api/$1`, headers: {
+        "Cache-Control": "no-store",
+        "CDN-Cache-Control": "no-store",
+        "Vercel-CDN-Cache-Control": "no-store",
+      } },
+      { handle: "filesystem" },
+      { src: "^/$", dest: "/index.html" },
+      { src: `^/(${singlePages.join("|")})/?$`, dest: "/index.html" },
+      { src: `^/(${nestedPages.join("|")})(?:/.*)?$`, dest: "/index.html" },
+      { src: "^/.*$", status: 404 },
     ],
   };
 }
