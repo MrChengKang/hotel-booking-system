@@ -1,0 +1,241 @@
+.booking {
+  position: absolute;
+  left: 0;
+  bottom: 66px;
+  width: 90%;
+  z-index: 3;
+}
+
+.search-bar {
+  height: 100px;
+  background: white;
+  border-radius: 60px;
+  box-shadow: 0 18px 30px -15px #131a353a,0 5px 10px #131a3508;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  gap: 0;
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 32px;
+  position: relative;
+}
+
+.search-field>svg {
+  color: #cbd1db;
+  flex-shrink: 0;
+}
+
+.location-field {
+  flex: 1.3;
+  min-width: 0;
+  padding-left: 18px;
+}
+
+.location-field>span {
+  min-width: 0;
+}
+
+.field-title {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.search-field input {
+  border: 0;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  min-width: 0;
+  font-size: 14px;
+  color: #607086;
+  margin-top: 5px;
+}
+
+.search-field input::placeholder,
+.field-hint {
+  color: #929bad;
+  font-size: 14px;
+}
+
+.date-field {
+  flex: 1;
+  border-left: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+}
+
+.field-button {
+  text-align: left;
+  padding: 0;
+}
+
+.field-hint {
+  display: block;
+  margin-top: 5px;
+}
+
+.guest-field {
+  flex: .7;
+}
+
+.search-submit {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  background: var(--color-accent);
+  color: white;
+  border-radius: 50%;
+  transition: background .2s;
+}
+
+.search-submit:hover {
+  background: var(--color-accent-hover);
+}
+
+@media (max-width:1150px) {
+  .booking {
+    width: 100%;
+  }
+
+  .search-field {
+    padding: 0 22px;
+  }
+}
+
+@media (max-width:850px) {
+  .booking {
+    bottom: 45px;
+  }
+
+  .search-bar {
+    border-radius: 24px;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 25px;
+  }
+
+  .location-field {
+    grid-column: 1/-1;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+  }
+
+  .search-field {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .date-field {
+    border: 0;
+  }
+
+  .guest-field {
+    padding-right: 50px;
+  }
+
+  .search-submit {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width:560px) {
+  .booking {
+    position: relative;
+    bottom: auto;
+    margin-top: 32px;
+  }
+
+  .search-bar {
+    padding: 22px 18px;
+    gap: 22px;
+    grid-template-columns: 1fr;
+  }
+
+  .search-field {
+    grid-column: 1;
+    min-height: 40px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #eee;
+    gap: 15px;
+  }
+
+  .search-field .field-title {
+    font-size: 16px;
+  }
+
+  .guest-field {
+    border: 0;
+    padding-bottom: 0;
+  }
+
+  .search-submit {
+    bottom: 18px;
+    right: 18px;
+    width: 51px;
+    height: 51px;
+  }
+}
+
+.date-field {
+  align-self: stretch;
+  border-radius: 50px;
+}
+
+.date-field .field-button {
+  flex: 1;
+}
+
+.date-field-active {
+  background: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 32px #11182712;
+}
+
+.clear-dates,
+.reset-guests {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.clear-dates:hover,
+.reset-guests:hover { background: #f3f4f6; }
+
+@media (max-width: 850px) {
+  .date-field-active { box-shadow: none; }
+}
+
+.guest-field {
+  align-self: stretch;
+  border-radius: 50px;
+  gap: 12px;
+}
+
+.guest-field .field-button { flex: 1; }
+
+.guest-field-active {
+  background: #fff;
+  box-shadow: 0 8px 32px #11182712;
+}
+
+@media (max-width: 850px) {
+  .guest-field-active { box-shadow: none; }
+}

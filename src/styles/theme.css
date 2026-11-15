@@ -1,0 +1,110 @@
+:root {
+  color-scheme: light;
+  --surface-color: #fff;
+  --text-color: #111827;
+  --muted-color: #738094;
+  --border-color: #e5e7eb;
+  --hover-color: #f3f4f6;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-color: #151e2e;
+  --text-color: #edf2f7;
+  --muted-color: #a6b2c5;
+  --border-color: #303c4f;
+  --hover-color: #243044;
+  --color-accent-soft: #3a251a;
+  --color-accent-hover: #fb923c;
+  --color-accent-border: #c46b35;
+  --color-accent-focus: #fdba74;
+}
+
+:root[data-theme="dark"] body {
+  background: #0d1421;
+  color: var(--text-color);
+}
+
+:root[data-theme="dark"] .search-bar,
+:root[data-theme="dark"] .date-field-active,
+:root[data-theme="dark"] .guest-field-active,
+:root[data-theme="dark"] .date-range-picker,
+:root[data-theme="dark"] .guest-popover,
+:root[data-theme="dark"] .carousel-arrow,
+:root[data-theme="dark"] .type-arrow,
+:root[data-theme="dark"] .stay-sale {
+  background: var(--surface-color);
+}
+
+:root[data-theme="dark"] .header,
+:root[data-theme="dark"] footer,
+:root[data-theme="dark"] .copyright,
+:root[data-theme="dark"] .how-it-works,
+:root[data-theme="dark"] .newsletter,
+:root[data-theme="dark"] .newsletter-form,
+:root[data-theme="dark"] .outline-button,
+:root[data-theme="dark"] .date-field,
+:root[data-theme="dark"] .date-range-picker,
+:root[data-theme="dark"] .calendar-footer,
+:root[data-theme="dark"] .guest-stepper button,
+:root[data-theme="dark"] .nearby-card,
+:root[data-theme="dark"] .stays-view-all,
+:root[data-theme="dark"] .carousel-arrow,
+:root[data-theme="dark"] .type-arrow,
+:root[data-theme="dark"] .location-field {
+  border-color: var(--border-color);
+}
+
+:root[data-theme="dark"] .hero-subtitle,
+:root[data-theme="dark"] .section-subtitle,
+:root[data-theme="dark"] .field-hint,
+:root[data-theme="dark"] .search-field input::placeholder,
+:root[data-theme="dark"] .calendar-month th,
+:root[data-theme="dark"] .calendar-footer p,
+:root[data-theme="dark"] .guest-age,
+:root[data-theme="dark"] .guest-stepper button,
+:root[data-theme="dark"] .destination-card p,
+:root[data-theme="dark"] .benefits article p,
+:root[data-theme="dark"] .travel-step p,
+:root[data-theme="dark"] .stay-type,
+:root[data-theme="dark"] .stay-address,
+:root[data-theme="dark"] .stay-bottom p > span:not(.stay-star),
+:root[data-theme="dark"] .nearby-info > span,
+:root[data-theme="dark"] .stay-type-card p,
+:root[data-theme="dark"] .reviewer-role,
+:root[data-theme="dark"] .footer-brand p,
+:root[data-theme="dark"] .footer-column button,
+:root[data-theme="dark"] .copyright,
+:root[data-theme="dark"] .socials a {
+  color: var(--muted-color);
+}
+
+:root[data-theme="dark"] .search-field input,
+:root[data-theme="dark"] .newsletter-form input {
+  color: var(--text-color);
+}
+
+:root[data-theme="dark"] .nav-divider,
+:root[data-theme="dark"] .calendar-month td.range-day::before,
+:root[data-theme="dark"] .nearby-count,
+:root[data-theme="dark"] .stays-filters button:hover,
+:root[data-theme="dark"] .stays-view-all:hover,
+:root[data-theme="dark"] .calendar-navigation button:hover:not(:disabled),
+:root[data-theme="dark"] .clear-dates:hover,
+:root[data-theme="dark"] .reset-guests:hover {
+  background: var(--hover-color);
+}
+
+:root[data-theme="dark"] .calendar-month td button:disabled { color: #637086; }
+:root[data-theme="dark"] .calendar-month td button.selected-day { color: #111827; }
+:root[data-theme="dark"] .dark-button,
+:root[data-theme="dark"] .calendar-done,
+:root[data-theme="dark"] .stays-filters button.selected,
+:root[data-theme="dark"] .newsletter-form button {
+  background: #edf2f7;
+  color: #111827;
+}
+:root[data-theme="dark"] .dark-button:hover { background: #d8e0eb; }
+:root[data-theme="dark"] .hero-glow { opacity: .15; }
+:root[data-theme="dark"] .newsletter-feedback { color: #6ed6a9; }
+:root[data-theme="dark"] .footer-column button:hover { color: var(--color-accent-hover); }

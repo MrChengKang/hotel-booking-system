@@ -1,0 +1,127 @@
+.benefits {
+  padding: 85px 0 115px;
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 80px;
+  align-items: center;
+  scroll-margin-top: 30px;
+}
+
+.hotel-benefits-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.1;
+  object-fit: cover;
+  border-radius: 28px;
+}
+
+.benefits h2 {
+  margin-bottom: 62px;
+}
+
+.benefits article {
+  margin-bottom: 40px;
+}
+
+.benefits article:last-child {
+  margin-bottom: 0;
+}
+
+.badge {
+  font-size: 12px;
+  border-radius: 20px;
+  padding: 4px 10px;
+  display: inline-block;
+}
+
+.gray {
+  background: #edeef0;
+  color: #364152;
+}
+
+.green {
+  background: #d7f7e6;
+  color: #008958;
+}
+
+.red {
+  background: #ffe0e3;
+  color: #eb193c;
+}
+
+.benefits h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 16px 0;
+}
+
+.benefits article p {
+  font-size: 16px;
+  color: #738094;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width:1150px) {
+  .benefits {
+    gap: 40px;
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+@media (max-width:850px) {
+  .benefits {
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    padding: 50px 0 80px;
+  }
+
+  .benefits h2 {
+    font-size: 30px;
+    margin-bottom: 35px;
+  }
+
+  .benefits h3 {
+    font-size: 18px;
+  }
+
+  .benefits article p {
+    font-size: 14px;
+  }
+
+  .desktop-break {
+    display: none;
+  }
+}
+
+@media (max-width:560px) {
+  .benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 30px 0 65px;
+  }
+
+  .hotel-benefits-image {
+    max-width: 420px;
+  }
+
+  .benefits-copy {
+    width: 100%;
+    padding: 0 5px;
+  }
+
+  .benefits h2 {
+    font-size: 30px;
+    margin-bottom: 35px;
+  }
+
+  .benefits article {
+    margin-bottom: 30px;
+  }
+
+  .benefits article p {
+    font-size: 15px;
+    max-width: 310px;
+  }
+}

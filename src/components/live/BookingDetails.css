@@ -1,0 +1,83 @@
+.hotel-modal.booking-details-modal {
+  width: min(1160px, calc(100% - 48px));
+  max-height: calc(100dvh - 48px);
+  padding: 0;
+  overflow: auto;
+}
+
+.booking-details-modal > .hotel-modal-heading {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 18px 24px;
+  background: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.booking-details-modal > .hotel-modal-heading h2 { margin: 0; font-size: 22px; }
+.booking-dialog-body { padding: 20px 24px 24px; }
+.booking-details-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  grid-template-areas: "summary actions" "review actions";
+  align-items: start;
+  gap: 18px 24px;
+}
+
+.booking-details-summary { grid-area: summary; }
+.booking-details-actions { grid-area: actions; }
+.booking-details-review { grid-area: review; }
+.booking-details-layout > * { min-width: 0; }
+.booking-details-summary,
+.booking-details-review {
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.booking-details-summary > h3 { margin: 18px 0 6px; font-size: 23px; overflow-wrap: anywhere; }
+.booking-details-layout p { font-size: 14px; line-height: 1.6; margin: 10px 0; overflow-wrap: anywhere; }
+.booking-details-room { color: var(--muted-color); }
+.booking-details-stay { margin: 18px 0; }
+.booking-details-stay > p { display: flex; align-items: flex-start; gap: 10px; }
+.booking-details-stay svg { flex-shrink: 0; margin-top: 2px; color: var(--muted-color); }
+.booking-details-reference { display: flex; flex-wrap: wrap; gap: 4px 8px; color: var(--muted-color); }
+.booking-details-reference > span:last-child { font-size: 12px; align-self: center; }
+.booking-details-costs { margin-top: 20px; }
+.booking-details-nights { max-height: 180px; overflow: auto; margin: 0; scrollbar-width: thin; }
+.booking-details-nights > div { gap: 16px; }
+.booking-details-nights dt { min-width: 0; overflow-wrap: anywhere; }
+.booking-details-nights dd, .booking-details-total dd { margin-left: 12px; white-space: nowrap; }
+.booking-details-total { margin: 0; }
+.booking-details-total > .reservation-total { margin: 0; padding-top: 16px; }
+.booking-details-cancel { margin-top: 18px; }
+.booking-details-cancel > .outline-button { margin-top: 12px; }
+.booking-details-review .booking-review { margin: 0; padding: 0; border: 0; }
+.booking-details-review h3 { margin: 0 0 12px; font-size: 17px; }
+.booking-details-review p { margin-bottom: 0; }
+
+.booking-details-actions > .booking-payment { margin: 0; padding: 20px; }
+.booking-details-actions .booking-payment h3 { margin: 0; font-size: 18px; }
+.booking-details-actions .booking-refund { margin-top: 16px; padding-top: 16px; }
+.payment-heading, .refund-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; }
+.payment-heading { margin: 10px 0; }
+.refund-heading { margin-bottom: 8px; }
+.payment-heading > .live-text-button, .refund-heading > .live-text-button { font-size: 12px; min-height: 36px; padding: 6px 0; text-align: left; }
+.booking-details-actions .booking-refund > .outline-button { width: 100%; margin-top: 6px; white-space: normal; }
+.booking-details-actions .refund-confirmation { padding: 16px; margin-bottom: 0; }
+.booking-details-actions .refund-confirmation > .outline-button { margin-top: 12px; }
+.booking-details-layout.is-cancelling { display: block; max-width: 620px; margin-inline: auto; }
+
+@media (max-width: 860px) {
+  .booking-details-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "summary" "actions" "review"; }
+  .hotel-modal.booking-details-modal { width: min(620px, calc(100% - 24px)); max-height: calc(100dvh - 24px); }
+}
+
+@media (max-width: 560px) {
+  .booking-details-modal > .hotel-modal-heading { padding: 16px; }
+  .booking-details-modal > .hotel-modal-heading h2 { font-size: 20px; }
+  .booking-dialog-body { padding: 16px; }
+  .booking-details-summary, .booking-details-review, .booking-details-actions > .booking-payment { padding: 16px; }
+  .booking-details-summary > h3 { font-size: 21px; }
+}

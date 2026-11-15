@@ -1,0 +1,26 @@
+name: Frontend checks
+on: [push, pull_request]
+permissions:
+  contents: read
+concurrency:
+  group: frontend-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm test -- --watch=false --runInBand
+        env:
+          CI: 'true'
+      - run: npm run build
+        env:
+          CI: 'true'
+          REACT_APP_API_URL: /api
+          GENERATE_SOURCEMAP: 'false'

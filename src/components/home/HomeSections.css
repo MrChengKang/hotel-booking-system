@@ -1,0 +1,4 @@
+.collections-heading{max-width:720px;margin-bottom:28px}
+.collections-eyebrow{color:var(--color-accent-focus);text-transform:uppercase;font-size:11px;font-weight:700;letter-spacing:1.6px}
+.collections-heading h2{font-size:clamp(26px,2.6vw,36px);letter-spacing:-.7px;margin:12px 0}
+.collections-heading>p{color:var(--muted-color);font-size:14px;line-height:1.8;margin:0}

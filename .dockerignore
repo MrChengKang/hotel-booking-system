@@ -1,0 +1,16 @@
+.git
+.github
+node_modules
+build
+coverage
+.backend-staging
+.tools
+**/.env
+**/.env.*
+**/*.env
+**/*.sql
+**/*.zip
+**/*.pem
+**/*.key
+**/*.log
+docs

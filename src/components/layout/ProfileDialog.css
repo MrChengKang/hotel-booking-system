@@ -1,0 +1,113 @@
+.profile-dialog {
+  width: min(480px, calc(100% - 32px));
+  max-height: 90vh;
+  padding: 28px;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  background: var(--surface-color);
+  color: var(--text-color);
+  box-shadow: 0 24px 80px #0003;
+}
+
+.profile-dialog::backdrop {
+  background: #11182799;
+  backdrop-filter: blur(4px);
+}
+
+.profile-dialog-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 26px;
+}
+
+.profile-dialog-heading h2 {
+  font-size: 24px;
+}
+
+.profile-dialog-heading button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--hover-color);
+  font-size: 24px;
+}
+
+.account-details > img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.account-demo-label {
+  text-align: center;
+  color: var(--color-accent-hover);
+  font-size: 12px;
+}
+
+.account-details dl {
+  margin: 24px 0;
+}
+
+.account-details dl > div {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.account-details dt {
+  color: var(--muted-color);
+}
+
+.account-details dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.account-details > p:last-child,
+.booking-empty p,
+.profile-help p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted-color);
+}
+
+.booking-empty {
+  text-align: center;
+  padding: 15px 5px 20px;
+}
+
+.booking-empty > svg {
+  color: var(--muted-color);
+}
+
+.booking-empty h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.booking-empty .dark-button {
+  margin-top: 15px;
+}
+
+.profile-help details {
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px 0;
+}
+
+.profile-help summary {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 560px) {
+  .profile-dialog {
+    padding: 22px;
+  }
+}

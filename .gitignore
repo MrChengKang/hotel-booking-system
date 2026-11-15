@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.backend-staging/
+.tools/
+
+# Deployment secrets and local output
+.env
+.env.*
+!.env.example
+!.env.production.example
+deploy/*.env
+/backups/
+/exports/

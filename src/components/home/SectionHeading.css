@@ -1,0 +1,24 @@
+.section-heading {
+  margin-bottom: 48px;
+}
+
+.section-heading .section-subtitle {
+  margin: 16px 0 0;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.section-heading-centered {
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .section-heading {
+    margin-bottom: 32px;
+  }
+
+  .section-heading .section-subtitle {
+    font-size: 14px;
+    margin-top: 12px;
+  }
+}

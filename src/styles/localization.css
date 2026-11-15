@@ -1,0 +1,35 @@
+/* Give CJK headings natural spacing and longer translated labels room to wrap. */
+:root:lang(zh) .hero h1,
+:root:lang(ja) .hero h1,
+:root:lang(ko) .hero h1 {
+  letter-spacing: 0;
+  line-height: 1.25;
+  font-size: clamp(38px, 4.6vw, 66px);
+}
+
+:root:lang(fr) .hero h1,
+:root:lang(ms) .hero h1 {
+  font-size: clamp(38px, 4.8vw, 68px);
+}
+
+.regional-option strong,
+.regional-option small,
+.regional-footer > span,
+.live-section-heading h2,
+.hotel-detail-panel h2 {
+  overflow-wrap: anywhere;
+}
+
+.reservation-reserve,
+.auth-submit {
+  white-space: normal;
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  .live-pagination { flex-wrap: wrap; gap: 12px; }
+  .live-section-heading { flex-wrap: wrap; }
+  :root:lang(zh) .hero h1,
+  :root:lang(ja) .hero h1,
+  :root:lang(ko) .hero h1 { font-size: 42px; }
+}

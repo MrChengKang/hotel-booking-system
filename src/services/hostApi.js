@@ -1,0 +1,27 @@
+import { apiRequest, apiMutation, apiUpload } from "./apiClient";
+const query = values => new URLSearchParams(values).toString();
+const id = value => encodeURIComponent(value);
+export const getHostOverview = signal => apiRequest("/host/overview", { signal });
+export const getHostHotels = (page = 0, signal) => apiRequest(`/host/hotels?${query({ page, size: 20 })}`, { signal });
+export const getHostHotel = (hotelId, signal) => apiRequest(`/host/hotels/${id(hotelId)}`, { signal });
+export const createHostHotel = values => apiMutation("POST", "/host/hotels", values);
+export const editHostHotel = (hotelId, values) => apiMutation("PUT", `/host/hotels/${id(hotelId)}`, values);
+export const changeHotelStatus = (hotelId, status) => apiMutation("PATCH", `/host/hotels/${id(hotelId)}/status`, { status });
+export const submitHostHotel = hotelId => apiMutation("POST", `/host/hotels/${id(hotelId)}/submit`);
+export const getHostRooms = (hotelId, signal) => apiRequest(`/host/hotels/${id(hotelId)}/room-types`, { signal });
+export const createHostRoom = (hotelId, values) => apiMutation("POST", `/host/hotels/${id(hotelId)}/room-types`, values);
+export const editHostRoom = (roomId, values) => apiMutation("PUT", `/host/room-types/${id(roomId)}`, values);
+export const getHostInventory = (roomId, from, to, signal) => apiRequest(`/host/room-types/${id(roomId)}/inventory?${query({ from, to })}`, { signal });
+export const initializeHostInventory = (roomId, values) => apiMutation("POST", `/host/room-types/${id(roomId)}/inventory/initialize`, values);
+export const editHostInventory = (roomId, date, values) => apiMutation("PUT", `/host/room-types/${id(roomId)}/inventory/${id(date)}`, values);
+export const getHostBookings = (hotelId, page = 0, signal) => apiRequest(`/host/hotels/${id(hotelId)}/bookings?${query({ page, size: 20 })}`, { signal });
+const imagePath = hotelId => `/host/hotels/${id(hotelId)}/images`;
+export const getHostImages = (hotelId, roomTypeId, signal) => apiRequest(`${imagePath(hotelId)}${roomTypeId ? `?${query({ roomTypeId })}` : ""}`, { signal });
+export const uploadHostImage = (hotelId, roomTypeId, file, altText) => {
+  const data = new FormData(); data.append("file", file); data.append("altText", altText);
+  if (roomTypeId) data.append("roomTypeId", roomTypeId);
+  return apiUpload(imagePath(hotelId), data);
+};
+export const orderHostImages = (hotelId, roomTypeId, imageIds) => apiMutation("PUT", `${imagePath(hotelId)}/order`, { roomTypeId: roomTypeId ? Number(roomTypeId) : null, imageIds });
+export const captionHostImage = (hotelId, imageId, altText) => apiMutation("PATCH", `${imagePath(hotelId)}/${id(imageId)}`, { altText });
+export const deleteHostImage = (hotelId, imageId) => apiMutation("DELETE", `${imagePath(hotelId)}/${id(imageId)}`);

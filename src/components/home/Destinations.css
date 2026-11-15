@@ -1,0 +1,29 @@
+.destinations { padding-block: 17px 64px; scroll-margin-top: 40px; }
+.destination-heading { display:flex; justify-content:space-between; gap:24px; align-items:center; margin-bottom:30px; }
+.destination-heading .section-subtitle { margin-bottom:0; }
+.live-destination-grid { display:grid; grid-template-columns:repeat(var(--destination-columns),minmax(0,1fr)); gap:24px; }
+.live-destination-card { display:block; border:1px solid var(--border-color); background:var(--surface-color); border-radius:22px; overflow:hidden; transition:transform .2s,border-color .2s; }
+.live-destination-card:hover { transform:translateY(-3px); border-color:var(--color-accent-focus); }
+.live-destination-card:focus-visible { outline:3px solid var(--color-accent-focus); outline-offset:4px; }
+.destination-cover { height:220px; overflow:hidden; }
+.destination-cover img,.destination-cover .hotel-photo-placeholder { width:100%;height:100%;object-fit:cover; }
+.destination-copy { padding:24px; }
+.destination-kicker { color:var(--muted-color);font-size:12px; }
+.destination-copy h3 { margin:10px 0;font-size:24px;overflow-wrap:anywhere; }
+.destination-copy p { font-size:14px;color:var(--muted-color);margin:0; }
+.destination-action { display:block;margin-top:24px;color:var(--color-accent-focus);font-size:13px;font-weight:600; }
+.live-destination-grid.is-single .live-destination-card { display:grid;grid-template-columns:1.15fr 1fr;align-items:center; }
+.live-destination-grid.is-single .destination-cover { height:280px; }
+.live-destination-grid.is-single .destination-copy { padding:36px; }
+.destination-empty { padding:28px;border:1px solid var(--border-color);border-radius:18px;background:var(--surface-color); }
+.destination-empty h3 { margin:0 0 12px; }
+.destination-empty p { color:var(--muted-color);line-height:1.7;margin:0; }
+@media(max-width:1000px) { .live-destination-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+.live-destination-grid.is-single { grid-template-columns:1fr; }
+@media(max-width:600px) {
+ .destinations { padding-bottom:36px; }
+ .destination-heading { align-items:flex-start;flex-direction:column;gap:18px; }
+ .live-destination-grid,.live-destination-grid.is-single .live-destination-card { grid-template-columns:1fr; }
+ .live-destination-grid.is-single .destination-cover,.destination-cover { height:210px; }
+ .live-destination-grid.is-single .destination-copy { padding:24px; }
+}

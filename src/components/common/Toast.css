@@ -1,0 +1,31 @@
+.toast {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  background: #111827;
+  color: #fff;
+  padding: 18px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 35px #11182730;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  max-width: calc(100% - 32px);
+  width: max-content;
+  font-size: 14px;
+}
+
+.toast button {
+  color: white;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+@media (max-width:560px) {
+  .toast {
+    font-size: 13px;
+    bottom: 16px;
+  }
+}
